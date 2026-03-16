@@ -1,40 +1,44 @@
 public class search_in_rotated_array
 {
-    public int[] plusOne(int[] digits) {
-        int carry = 0;
-        int original_length = digits.length;
-        int ptr = original_length - 1;
-        int digit = digits[original_length - 1];
-        int sum = digit + 1 + carry;
-        digits[ptr] = sum % 10;
-        carry = sum / 10;
-
-        ptr --;
-        while(ptr >=0)
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right)
         {
-            sum = digits[ptr] + carry;
-            digits[ptr] = sum % 10;
-            carry = sum / 10;
-            ptr --;
-        }
-
-        if(carry == 0)
-        {
-            return digits;
-        }
-
-        else
-        {
-            int[] newArray = new int[original_length + 1];
-            for(int i = original_length - 1; i >= 0; i--)
+            int mid = (left + right) / 2;
+            if(nums[mid] == target)
             {
-                newArray[i+1] = digits[i];
+                return mid;
             }
 
-            newArray[0] = carry;
-            return newArray;
+            else if(nums[left] <= nums[mid])
+            {
+                if(nums[left] <= target && target <= nums[mid])
+                {
+                    right = mid - 1;
+                }
+
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+
+            else
+            {
+                if(nums[mid] <= target && target <= nums[right])
+                {
+                    left = mid + 1;
+                }
+
+                else
+                {
+                    right = mid - 1;
+                }
+            }
         }
 
+        return -1;
 
     }
 }
