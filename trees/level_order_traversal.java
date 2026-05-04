@@ -2,18 +2,7 @@
  * Definition for a binary tree node.
  */
 import java.util.*;
-  class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
+
 public class level_order_traversal{
     public List<List<Integer>> levelOrder(TreeNode root) {
         HashMap<Integer,List<Integer>> map = new HashMap<>();
