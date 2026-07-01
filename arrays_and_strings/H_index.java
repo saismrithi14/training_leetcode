@@ -1,5 +1,6 @@
+import java.util.*;
 public class H-index {
-    public int hIndex(int[] citations) {
+    int hIndex(int[] citations) {
         int h = 0;
         Arrays.sort(citations);
         int length = citations.length;
